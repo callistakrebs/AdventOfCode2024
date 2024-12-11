@@ -44,7 +44,7 @@ print(count)
 ```
 
 ## ChatGPT's Improved Version
-```
+```py
 def is_sorted_or_reverse(levels):
     """Check if the list is sorted in ascending or descending order."""
     return levels == sorted(levels) or levels == sorted(levels, reverse=True)

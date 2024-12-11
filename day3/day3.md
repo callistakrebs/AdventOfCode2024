@@ -15,7 +15,7 @@ print(sum)
 ```
 
 ## ChatGPT's Improved Version
-```
+```py
 import re
 
 # Open the file using a context manager and read its content

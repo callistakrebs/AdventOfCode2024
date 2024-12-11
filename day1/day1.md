@@ -29,7 +29,7 @@ for i in range(len(left)):
 print(score)
 ```
 ### ChatGPT's Improved Version
-```
+```py
 from collections import Counter
 
 # Initialize lists
