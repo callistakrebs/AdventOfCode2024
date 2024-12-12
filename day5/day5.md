@@ -244,6 +244,7 @@ print(f"Invalid: {invalid_sum}")
 ### Readability Improvements
 > * Using a separate function for parsing the pages, lets you do an in-line declaration for the `pages_to_copy` list with integer values
 > * No reason to track `invalid_sum` and `valid_sum` separately, since we can just do the total number of groups minus `valid_sum` to get `invalid_sum` and vice versa.
+> * I really need to stop leaving the file open for the whole script.
 
 ### Deque
 > * Using `deque()` (pronounced "deck", stands for double-ended queue) to implement the stack in DFS lets you control where the node is appended (`appendleft`) and later avoids the need to reverse the stack later.
