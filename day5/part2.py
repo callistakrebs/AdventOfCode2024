@@ -1,5 +1,3 @@
-from operator import itemgetter
-
 def convert_pages(page_sets):
     return map(int, page_sets.split(","))
 
