@@ -3,16 +3,16 @@ def hike(grid, starting_point, peaks = None):
     startc = starting_point[1]
 
     if peaks is None:
-        peaks = []    
+        peaks = set()
     for dr, dc in directions:
         newr, newc = startr + dr, startc + dc 
         if 0 <= newr <= len(grid) - 1 and 0 <= newc <= len(grid) - 1:
             if grid[newr][newc] == grid[startr][startc] + 1:
                 if grid[newr][newc] == 9:
-                    peaks.append((newr, newc))
+                    peaks.add((newr, newc))
                 else:
                     hike(grid, (newr,newc), peaks)
-    return set(peaks)
+    return peaks
 
 directions = [
     (0, -1), # up
