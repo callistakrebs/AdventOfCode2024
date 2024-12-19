@@ -9,18 +9,18 @@ class LinkedList():
         self.head = None
 
     def insert_at_end(self, new_node):
-        if self.head == None:
+        if self.head is None:
             self.head = new_node
         else:
             current_node = self.head
-            while current_node.next != None:
+            while current_node.next is not None:
                 current_node = current_node.next
             new_node.prev = current_node
             current_node.next = new_node
 
     def blink(self):
         current_node = self.head
-        while current_node != None:
+        while current_node is not None:
             if current_node.value == '0':
                 current_node.value = '1'
             elif len(current_node.value) % 2 != 0: # odd number of digits
@@ -38,7 +38,7 @@ class LinkedList():
         new_node.next = current_node # insert new node on the left
         new_node.prev = current_node.prev
         
-        if current_node.prev != None:
+        if current_node.prev is not None:
             current_node.prev.next = new_node
         else:
             # Current_node is head, update head
@@ -49,7 +49,7 @@ class LinkedList():
     def __str__(self):
         result = []
         current_node = self.head
-        while current_node != None:
+        while current_node is not None:
             result.append(current_node.value)
             result.append(' ')
             current_node = current_node.next
@@ -57,17 +57,17 @@ class LinkedList():
 
     def print_reverse(self):
         current_node = self.head
-        while current_node.next != None:
+        while current_node.next is not None:
             current_node = current_node.next
         
-        while current_node != None:
+        while current_node is not None:
             print(current_node.value)
             current_node = current_node.prev
 
     def __len__(self):
         result = 0
         current_node = self.head
-        while current_node != None:
+        while current_node is not None:
             result += 1
             current_node = current_node.next
         return result
