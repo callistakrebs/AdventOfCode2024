@@ -21,20 +21,21 @@ def is_in_bounds(garden, r,c):
 
 
 def get_corners(plots):
-    corner_counts = []
-    for plot in plots:
+    new_plots = []
+    for idx,plot in enumerate(plots):
         corners = 0
-        for r,c in plot[1]:
+        for r,c in plot["locations"]:
             fence_needed = [False, False, False, False] # up, left, down, right
             for idx,(dr, dc) in enumerate(DIRECTIONS):
                 nr, nc = r + dr, c + dc
-                if (nr,nc) not in plot[1]:
+                if (nr,nc) not in plot["locations"]:
                     fence_needed[idx] = True
             
             corners += count_corners(fence_needed)
+
             for idx,(dr,dc) in enumerate(DIAGNOLS):
                 nr, nc = r + dr, c + dc
-                if (nr,nc) not in plot[1]:
+                if (nr,nc) not in plot["locations"]:
                     if DIAGNOLS[(dr,dc)] == "up-left" and not fence_needed[0] and not fence_needed[1]:
                         corners += 1
                     if DIAGNOLS[(dr,dc)] == "up-right" and not fence_needed[0] and not fence_needed[3]:
@@ -44,9 +45,9 @@ def get_corners(plots):
                     if DIAGNOLS[(dr,dc)] == "down-right" and not fence_needed[3] and not fence_needed[2]:
                         corners += 1
 
-        corner_counts.append(plot + (corners,))
-    
-    return corner_counts
+        plot["corners"] = corners
+        new_plots.append(plot)
+    return new_plots
 
 def count_corners(fence_needed):
     count = 0
@@ -64,8 +65,8 @@ def count_corners(fence_needed):
 def get_cost(plots):
     costs = []
     for plot in plots:
-        area = len(plot[1])
-        sides = plot[3]
+        area = len(plot["locations"])
+        sides = plot["corners"]
         costs.append(area * sides)
     
     total_cost = sum(costs)
@@ -111,8 +112,8 @@ if __name__ == "__main__":
         for col in range(ncols):
             if (row,col) not in visited:
                 curr_letter = garden[row][col]
-                places, p = get_neighbors(garden, (row,col), visited=visited)
-                plots.append((curr_letter, places, p))
+                places, perimeter = get_neighbors(garden, (row,col), visited=visited)
+                plots.append({"letter":curr_letter,"locations":places, "perimeter":perimeter})
 
     plots_with_corners = get_corners(plots)
     print(get_cost(plots_with_corners))
