@@ -5,7 +5,7 @@ DIRECTIONS = [
     (0,1),  # right
 ]
 
-DIAGNOLS = {
+DIAGONALS = {
     (-1,-1): "up-left", # up left
     (-1, 1): "up-right", # up right
     (1, -1): "down-left", # down left
@@ -30,16 +30,16 @@ def get_corners(plots):
             
             corners += count_corners(fence_needed)
 
-            for idx,(dr,dc) in enumerate(DIAGNOLS):
+            for idx,(dr,dc) in enumerate(DIAGONALS):
                 nr, nc = r + dr, c + dc
                 if (nr,nc) not in plot["locations"]:
-                    if DIAGNOLS[(dr,dc)] == "up-left" and not fence_needed[0] and not fence_needed[1]:
+                    if DIAGONALS[(dr,dc)] == "up-left" and not fence_needed[0] and not fence_needed[1]:
                         corners += 1
-                    if DIAGNOLS[(dr,dc)] == "up-right" and not fence_needed[0] and not fence_needed[3]:
+                    if DIAGONALS[(dr,dc)] == "up-right" and not fence_needed[0] and not fence_needed[3]:
                         corners += 1
-                    if DIAGNOLS[(dr,dc)] == "down-left" and not fence_needed[1] and not fence_needed[2]:
+                    if DIAGONALS[(dr,dc)] == "down-left" and not fence_needed[1] and not fence_needed[2]:
                         corners += 1
-                    if DIAGNOLS[(dr,dc)] == "down-right" and not fence_needed[3] and not fence_needed[2]:
+                    if DIAGONALS[(dr,dc)] == "down-right" and not fence_needed[3] and not fence_needed[2]:
                         corners += 1
 
         plot["corners"] = corners
