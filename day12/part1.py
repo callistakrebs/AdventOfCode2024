@@ -1,5 +1,3 @@
-from functools import cache
-
 DIRECTIONS = [
     (-1,0), # up
     (0,-1), # left

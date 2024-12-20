@@ -1,6 +1,3 @@
-from functools import cache
-from collections import defaultdict
-
 DIRECTIONS = [
     (-1,0), # up
     (0,-1), # left
