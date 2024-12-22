@@ -1,7 +1,5 @@
 import re
-from collections import deque
-import numpy as np
-import time
+
 
 def getPositionAndVelocity(line):
     pattern = r"p=(\d+),(\d+) v=(-?\d+),(-?\d+)"
@@ -29,7 +27,7 @@ if __name__ == "__main__":
             #     print(i)
             #     break
             # states.add(grid_tuple)
-            
+
             print(i, file=f)
             for row in grid:
                 print(''.join(row), file=f)
